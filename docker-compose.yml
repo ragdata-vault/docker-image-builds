@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+
+    docker-image-builder:
+        build: ./docker-image-builder
+        image: docker-image-builder
+        container_name: dockder-image-builder
+        volumes:
+            - .:/project
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+        stdin_open: true
+        tty: true
+
+    rpi-docker-image-builder:
+        image: lbacik/rpi-docker-image-builder
+        container_name: rpi-docker-image-builder
+        volumes:
+            - .:/project
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+        stdin_open: true
+        tty: true
